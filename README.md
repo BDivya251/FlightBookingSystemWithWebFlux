@@ -3,6 +3,9 @@
 This project implements a reactive Flight Booking System using webflux and mongoDB.
 
 The assignment focuses on designing the data model, exposing REST APIs and applying validations.
+<img width="502" height="602" alt="FlightBookingMagm drawio" src="https://github.com/user-attachments/assets/ee88e898-8d14-436b-b411-d76bd99fd0ec" />
+
+
 
 **Implemented Services:**
 
