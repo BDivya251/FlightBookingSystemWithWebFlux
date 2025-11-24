@@ -6,8 +6,10 @@ The assignment focuses on designing the data model, exposing REST APIs and apply
 
 Implemented Services:
 
-• FlightService – handles flight inventory, flight creation, update, delete, and search by source/destination.
+• FlightService – handles flight inventory, flight creation, update, delete, and search by source/destination.  
+
 • BookingService – manages booking creation (one-way & round-trip), seat allocation, return booking generation, cancellation flow, and booking history.
+
 • AirlineService – supports airline registration and validation before adding flights.
 
 Key Features Delivered:
