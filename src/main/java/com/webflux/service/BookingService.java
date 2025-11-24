@@ -138,7 +138,7 @@ public class BookingService {
 
 	public Mono<BookingDTO> getOnId(String id){
 		return bookingrepository.getBookingByPnr(id)
-				.switchIfEmpty(Mono.error(new RuntimeException("no id found")));
+				.switchIfEmpty(Mono.error(new BookingNotFoundException("no id found")));
 	}
 	public Flux<BookingDTO> getOnEmail(String email) {
 		return bookingrepository.findByEmailId(email)
