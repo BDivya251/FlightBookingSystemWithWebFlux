@@ -7,8 +7,6 @@ import com.webflux.dto.FlightDTO;
 import com.webflux.entity.Booking;
 import com.webflux.entity.Flight;
 
-import reactor.core.publisher.Mono;
-
 public class AppUtils {
 	private AppUtils() {
         throw new UnsupportedOperationException("Utility class");
