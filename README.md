@@ -15,9 +15,14 @@ The assignment focuses on designing the data model, exposing REST APIs and apply
 **Key Features Delivered:**
 
 • Flight inventory management with seat tracking.
+
 • One-way and round-trip booking processing.
+
 • Passenger handling with meal type and seat validation.
+
 • Ticket retrieval by PNR and booking lookup by email/status.
+
 • Global exception handling with custom errors.
+
 • DTO-entity mapping via AppUtils.
 
