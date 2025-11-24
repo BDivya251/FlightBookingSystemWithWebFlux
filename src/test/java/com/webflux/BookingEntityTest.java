@@ -60,9 +60,5 @@ class BookingEntityTest {
         assertNotNull(b.toString());
     }
 
-//    @Test
-//    void testCanEqual() {
-//        Booking b = new Booking();
-//        assertFalse(b.canEqual("wrong-type"));
-//    }
+
 }

@@ -1,10 +1,6 @@
 package com.webflux.dto;
 
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
-
-import com.webflux.entity.BookingStatus;
 import com.webflux.entity.Passengers;
 
 import jakarta.validation.constraints.Email;

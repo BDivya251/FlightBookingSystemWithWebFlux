@@ -13,40 +13,38 @@ import com.webflux.exception.BookingNotFoundException;
 import com.webflux.exception.DuplicateResourceException;
 import com.webflux.exception.FlightNotFoundException;
 import com.webflux.exception.NoEnoughFlightSeatsException;
+import com.webflux.repository.AirlineRepository;
 import com.webflux.repository.BookingRepository;
 import com.webflux.repository.FlightRepository;
 import com.webflux.repository.PassengerRepository;
 import com.webflux.util.AppUtils;
 
 import jakarta.validation.constraints.Email;
+import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+@RequiredArgsConstructor
 @Service
 public class BookingService {
-	@Autowired
-	private BookingRepository bookingrepository;
-	@Autowired
-	private FlightRepository flightrepository;
-	@Autowired
-	private PassengerRepository passengerrepository;
+	
+	private final BookingRepository bookingrepository;
+	
+	private final FlightRepository flightrepository;
+	
+	private final PassengerRepository passengerrepository;
 	public Mono<BookingDTO> addBooking(Mono<BookingDTO> bookingdto){
 		return bookingdto
 		.flatMap(dto->
 		flightrepository.findById(dto.getFlightId())
 		.switchIfEmpty(Mono.error(new RuntimeException("Flight not found")))
 		.flatMap(flight->{
-//			int count=bookingdto.getSeatsBooked()==null ?0:bookingdto.getSeatsBooked().size();
-			
 			for(Integer seat:dto.getSeatNumbersBooked()) {
 				if(flight.getSeatNumbersBooked().contains(seat)) {
 					
 					return Mono.error(new RuntimeException("Seat Numbers already booked"));
 				}
 			}
-//			if(dto.isRoundTrip()) {
-//				dto.setTotalPrice(flight.getPrice()*2);
-//			}
 			if(flight.getSeatsAvailable()<dto.getSeatsBooked()) {
 			return Mono.error(new RuntimeException("No enought seats available"));
 		}
@@ -132,8 +130,7 @@ public class BookingService {
 	    returnDto.setSeatNumbers(dto.getSeatNumbers());
 	    returnDto.setEmailId(dto.getEmailId());
 	    returnDto.setRoundTrip(true);
-//	    returnDto.setDepartureDate(flight.getDepartureDate().plusDays(2));
-	    return processOneWayBooking(flight, returnDto,true);
+    return processOneWayBooking(flight, returnDto,true);
 	}
 
 	public Mono<BookingDTO> getOnId(String id){
@@ -156,6 +153,9 @@ public class BookingService {
 				.map(AppUtils::entityToDtoB);
 	}
 	private Booking markCancelled(Booking booking) {
+		if (booking.getBookingStatus() == BookingStatus.CANCELLED) {
+	        throw new RuntimeException("Booking already cancelled");
+	    }
 	    booking.setBookingStatus(BookingStatus.CANCELLED);
 	    return booking;
 	}
@@ -171,6 +171,7 @@ public class BookingService {
 	    return bookingrepository.findById(id)
 	        .switchIfEmpty(Mono.error(new BookingNotFoundException("Booking not found")))
 	        .map(this::markCancelled)
+	        
 	        .flatMap(booking ->
 	            flightrepository.findById(booking.getFlightId())
 	                .switchIfEmpty(Mono.error(new FlightNotFoundException("Flight not found")))

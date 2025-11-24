@@ -33,11 +33,7 @@ public class FlightController {
 		return service.getFlight(id);
 	}
 	
-//	@GetMapping("/flight-range")
-//	public Flux<FlightDTO> getFlightsInRange(@RequestParam("min") float min,@RequestParam("max") float max){
-//		return service.getFlightsInPrice(min, max);
-//	}
-//	
+
 	@PostMapping("/inventory")
 	public Mono<FlightDTO> saveFlight(@Valid @RequestBody Mono<FlightDTO> flightdto){
 		 return service.saveFlight(flightdto);

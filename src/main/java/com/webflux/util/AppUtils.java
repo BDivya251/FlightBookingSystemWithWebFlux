@@ -10,12 +10,12 @@ import com.webflux.entity.Flight;
 import reactor.core.publisher.Mono;
 
 public class AppUtils {
+	private AppUtils() {
+        throw new UnsupportedOperationException("Utility class");
+    }
 	public static FlightDTO entityToDto(Flight flight) {
 
 	    FlightDTO dto = new FlightDTO();
-
-//	    dto.setId(flight.getId());
-//	    dto.setAirlineId(flight.getAirlineId());
 
 	    dto.setSource(flight.getSource());
 	    dto.setDestination(flight.getDestination());

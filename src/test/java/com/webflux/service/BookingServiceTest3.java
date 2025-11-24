@@ -3,8 +3,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Spy;
-
 import static org.mockito.ArgumentMatchers.any;
 import com.webflux.dto.BookingDTO;
 import com.webflux.entity.Booking;
@@ -12,22 +10,16 @@ import com.webflux.entity.Flight;
 import com.webflux.exception.BookingNotFoundException;
 import com.webflux.repository.BookingRepository;
 import com.webflux.repository.FlightRepository;
-import com.webflux.repository.PassengerRepository;
 import com.webflux.util.AppUtils;
 
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
-import static org.mockito.ArgumentMatchers.eq;
-
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
-import java.util.List;
 @ExtendWith(MockitoExtension.class)
 class BookingServiceTest3 {
 

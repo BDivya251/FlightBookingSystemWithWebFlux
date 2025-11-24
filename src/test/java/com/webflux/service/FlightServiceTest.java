@@ -132,27 +132,7 @@ class FlightServiceTest {
                 .verify();
     }
 
-//    @Test
-//    void testSaveFlight_duplicateExists() {
-//
-//        FlightDTO dto = new FlightDTO();
-//        dto.setAirlineId("A1");
-//        dto.setSource("HYD");
-//        dto.setDestination("DEL");
-//
-//        Airline airline = new Airline();
-//        airline.setId("A1");
-//
-//        when(airlineRepository.findById("A1"))
-//                .thenReturn(Mono.just(airline));
-//
-//        when(flightRepository.findByAirlineIdAndSourceAndDestination("A1","HYD","DEL"))
-//                .thenReturn(Mono.just(new Flight())); // ✅ correct for Mono
-//
-//        StepVerifier.create(flightService.saveFlight(Mono.just(dto)))
-//                .expectError(DuplicateResourceException.class)
-//                .verify();
-//    }
+
 
 
     @Test

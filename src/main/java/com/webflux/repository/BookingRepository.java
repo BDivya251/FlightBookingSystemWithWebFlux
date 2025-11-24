@@ -10,7 +10,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface BookingRepository extends ReactiveMongoRepository<Booking,String>{
-//	public Mono<BookingDTO> getFlightById(Integer id);
 
 	public Mono<BookingDTO> getBookingByPnr(String id);
 

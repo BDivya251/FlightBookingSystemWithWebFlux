@@ -3,9 +3,7 @@ package com.webflux.service;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import com.webflux.dto.FlightDTO;
 import com.webflux.entity.Flight;
@@ -16,18 +14,17 @@ import com.webflux.repository.AirlineRepository;
 import com.webflux.repository.FlightRepository;
 import com.webflux.util.AppUtils;
 
+import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+@RequiredArgsConstructor
 @Service
 public class FlightService {
-	@Autowired
-	private FlightRepository flightRepository;
-	@Autowired
-	private AirlineRepository airlineRepository;
-//	public Flux<FlightDTO> getFlights(){
-//		return flightRepository.findAll().map(AppUtils::entityToDto);
-//	}
+	
+	private final FlightRepository flightRepository;
+		private final AirlineRepository airlineRepository;
+
 	
 	public Mono<FlightDTO> getFlight(String flightNumber){
 		return flightRepository.findById(flightNumber)
@@ -38,18 +35,7 @@ public class FlightService {
 	public Flux<Flight> getFlightBySouAndDes(String source,String destination){
 		return flightRepository.findBySourceAndDestination(source, destination);
 	}
-//	public Flux<FlightDTO> getFlightsInPrice(Float min,Float max){
-//		return flightRepository.findByPriceBetween(Range.closed(min, max));
-//	}
-	
-//	public Mono<Object> saveFlight(Mono<FlightDTO> flightdtomono){
-//		  return flightdtomono
-//				  .flatMap(dto->flightRepository.findByAirlineIdAndSourceAndDestination(dto.getAirlineId(), dto.getSource(), dto.getDestination()))
-//				  .flatMap(existing->Mono.error( new RuntimeException("flight already exisited in airline")))
-//				  .switchIfEmpty(flightRepository.save(AppUtils.DtoToFlight(flightdtomono))
-//				  .map(AppUtils::entityToDto));
-//				  
-//	}
+
 	public Mono<FlightDTO> saveFlight(Mono<FlightDTO> flightDtoMono) {
 			return flightDtoMono
 					.flatMap(dto->

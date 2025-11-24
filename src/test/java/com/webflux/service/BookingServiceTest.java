@@ -6,16 +6,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
 
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
-
 import com.webflux.entity.Booking;
-import com.webflux.entity.BookingStatus;
 import com.webflux.entity.Flight;
 import com.webflux.exception.BookingNotFoundException;
 import com.webflux.repository.BookingRepository;

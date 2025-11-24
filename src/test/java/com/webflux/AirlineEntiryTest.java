@@ -42,9 +42,5 @@ class AirlineEntityTest {
         assertNotNull(a.toString());
     }
 
-//    @Test
-//    void testCanEqual() {
-//        Airline a = new Airline();
-//        assertFalse(a.canEqual("not-airline"));
-//    }
+
 }

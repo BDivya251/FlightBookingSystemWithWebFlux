@@ -8,12 +8,14 @@ import com.webflux.entity.Airline;
 import com.webflux.entity.Flight;
 import com.webflux.repository.AirlineRepository;
 
+import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
+@RequiredArgsConstructor
 @Service
 public class AirlineService {
-	@Autowired
-	private AirlineRepository airlinerepository;
+	
+	private final AirlineRepository airlinerepository;
 	public Mono<String> addAirline(AirlineDTO airl){
 		Airline a = new Airline();
 		a.setName(airl.getName());

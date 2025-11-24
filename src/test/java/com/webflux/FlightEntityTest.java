@@ -62,10 +62,5 @@ class FlightEntityTest {
         assertNotNull(f.toString());
     }
 
-//    @Test
-//    void testCanEqual() {
-//        Flight f = new Flight();
-//        assertFalse(f.canEqual("wrong"));
-//    }
 }
 
