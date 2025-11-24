@@ -13,17 +13,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.webflux.dto.FlightDTO;
 import com.webflux.entity.Flight;
+import com.webflux.repository.AirlineRepository;
 import com.webflux.service.FlightService;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/flight/airline")
 public class FlightController {
-	@Autowired
-	private FlightService service;
+	
+	private final FlightService service;
 	@GetMapping("/{id}")
 	public Mono<FlightDTO> getFlight(@PathVariable String id){
 		return service.getFlight(id);

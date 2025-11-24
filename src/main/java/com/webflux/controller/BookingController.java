@@ -11,17 +11,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.webflux.dto.BookingDTO;
+import com.webflux.repository.AirlineRepository;
 import com.webflux.service.BookingService;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/flight")
 public class BookingController {
-	@Autowired
-	private BookingService bookingservice;
+	
+	private final BookingService bookingservice;
 	@PostMapping("/booking")
 	public Mono<BookingDTO> addBook(@Valid @RequestBody Mono<BookingDTO> book){
 		return bookingservice.processBooking(book);
