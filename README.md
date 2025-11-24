@@ -1,10 +1,10 @@
-Flight Booking System 
+**Flight Booking System **
 
 This project implements a reactive Flight Booking System using webflux and mongoDB.
 
 The assignment focuses on designing the data model, exposing REST APIs and applying validations.
 
-Implemented Services:
+**Implemented Services:**
 
 • FlightService – handles flight inventory, flight creation, update, delete, and search by source/destination.  
 
@@ -12,7 +12,7 @@ Implemented Services:
 
 • AirlineService – supports airline registration and validation before adding flights.
 
-Key Features Delivered:
+**Key Features Delivered:**
 
 • Flight inventory management with seat tracking.
 • One-way and round-trip booking processing.
